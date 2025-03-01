@@ -7,4 +7,4 @@
 <p>But no one has counted how many weeks, days, hours, minutes or seconds they've lived.</p>
 <p>This React page will help you count it all in real time.</p>
 <p>Technologies used: React, Redux, Vite.</p>
-<p>Thank you for your attention.</p>
+<p>Thank you for your attention. This <a href="https://mmalabugin.ru/DayOnEarth">page</a></p>
