@@ -13,20 +13,24 @@ function YearComponent({setDoned, doned, get}){
     const value = useRef(null);
 
     const handleInputYear = () => {
-        const year = value.current.value;
-        dispatch(inputYear(year));
-        dispatch(calculateYearsOld(year));
-      };
-    
-      const finalInputYear = () => {
-        dispatch(yearsInputDone(true));
-        setDoned([true]);
-      };
+      const year = value.current.value;
+      dispatch(inputYear(year));
+      dispatch(calculateYearsOld(year));
+    };
+    const handleKeyDown = (event) => { 
+      if(event.keyCode === 13){
+        finalInputYear();
+      }
+    };
+    const finalInputYear = () => {
+      dispatch(yearsInputDone(true));
+      setDoned([true]);
+    };
 
     return(<div className="year-container">
             {!isDone ? (<>
             <h2>Введите свой год рождения</h2>
-             <input type="number" ref={value} onChange={handleInputYear}/><br/>
+             <input type="number" ref={value} onChange={handleInputYear} onKeyDown={handleKeyDown}/><br/>
              <p>{ !yearsOld  ? "-" : yearsOld}</p>
              <button onClick={finalInputYear}>Далее</button>
              </>) : (<><p>{inputYearValue}</p>
