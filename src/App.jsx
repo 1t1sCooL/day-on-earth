@@ -26,7 +26,7 @@ function App(){
             {doned[1] && <DayComponent get={getInd} setDoned={setDoned}/>}
             {doned[2] && <HourComponent get={getInd} setDoned={setDoned}/>}
             {doned[3] && <MinComponent get={getInd} setDoned={setDoned}/>}
-            {doned[4] &&<h2>На земле.</h2>}
+            {doned[4] &&<h2>На Земле.</h2>}
             
      </div>
     );
