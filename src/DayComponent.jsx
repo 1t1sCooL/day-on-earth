@@ -17,7 +17,7 @@ function DayComponent({setDoned, get}){
 
 
     useEffect(()=>{
-        const date = new Date(year, month++ , 0);
+        const date = new Date(year, +month+1, 0);
         const daysInMonth = date.getDate();
         const daysArr = [];
         for(let i = 1; i <= daysInMonth; i++){
