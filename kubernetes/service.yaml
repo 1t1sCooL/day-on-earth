@@ -1,11 +1,11 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: DayOnEarth
+  name: day-on-earth
   namespace: default
 spec:
   selector:
-    app: DayOnEarth-app
+    app: day-on-earth-app
   ports:
     - port: 80
       targetPort: 80

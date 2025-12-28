@@ -1,21 +1,21 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: DayOnEarth-app
+  name: day-on-earth-app
   namespace: default
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: DayOnEarth-app
+      app: day-on-earth-app
   template:
     metadata:
       labels:
-        app: DayOnEarth-app
+        app: day-on-earth-app
     spec:
       containers:
-        - name: DayOnEarth-app
-          image: DayOnEarth-app:latest
+        - name: day-on-earth-app
+          image: day-on-earth-app:latest
           ports:
             - containerPort: 80
           env:

@@ -7,6 +7,6 @@ resources:
   - ingress.yaml
 
 images:
-  - name: DayOnEarth-app
-    newName: DayOnEarth-app
+  - name: day-on-earth-app
+    newName: day-on-earth-app
     newTag: latest
