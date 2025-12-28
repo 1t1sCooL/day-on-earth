@@ -3,7 +3,7 @@ pipeline {
     
     environment {
         REGISTRY = 'localhost:5000'
-        IMAGE_NAME = 'DayOnEarth'
+        IMAGE_NAME = 'day-on-earth'
         IMAGE_TAG = "${BUILD_NUMBER}"
         FULL_IMAGE = "${REGISTRY}/${IMAGE_NAME}:${IMAGE_TAG}"
     }
@@ -74,16 +74,16 @@ EOF
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: DayOnEarth
+  name: day-on-earth
 spec:
   replicas: 2
   selector:
     matchLabels:
-      app: DayOnEarth
+      app: day-on-earth
   template:
     metadata:
       labels:
-        app: DayOnEarth
+        app: day-on-earth
     spec:
       containers:
       - name: react-app
@@ -95,10 +95,10 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: DayOnEarth
+  name: day-on-earth
 spec:
   selector:
-    app: DayOnEarth
+    app: day-on-earth
   ports:
   - port: 80
     targetPort: 80
