@@ -18,7 +18,6 @@ pipeline {
         
         stage('Docker Build & Push') {
             steps {
-                // Используем те же учетные данные Docker Hub, что и в первом пайплайне
                 withCredentials([usernamePassword(credentialsId: 'dockerhub', 
                                                  usernameVariable: 'DOCKER_HUB_USER', 
                                                  passwordVariable: 'DOCKER_HUB_PASSWORD')]) {
@@ -40,14 +39,9 @@ pipeline {
         stage('Deploy') {
             steps {
                 script {
-                    // Обновляем тег образа в манифесте, если файл существует
                     if (fileExists('kubernetes/deployment.yaml')) {
                         sh "sed -i 's|image: .*|image: ${FULL_IMAGE}|g' kubernetes/deployment.yaml"
                     }
-                    
-                    // Применяем все манифесты (deployment, service, ingress, certificate) из папки kubernetes
-                    // Команда 'kubectl apply -k' ожидает наличие файла kustomization.yaml в папке
-                    // Если его нет, можно использовать 'kubectl apply -f kubernetes/'
                     if (fileExists('kubernetes/kustomization.yaml')) {
                         sh "kubectl apply -k kubernetes/"
                     } else {
@@ -61,7 +55,6 @@ pipeline {
     post {
         always {
             sh "docker logout"
-            // Удаляем локальные образы, чтобы не забивать место на сервере Jenkins
             sh "docker rmi ${FULL_IMAGE} ${LATEST_IMAGE} || true"
         }
     }
