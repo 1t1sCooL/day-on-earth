@@ -4,16 +4,13 @@ metadata:
   name: day-on-earth
   namespace: default
   annotations:
-    nginx.ingress.kubernetes.io/rewrite-target: /$2
-    nginx.ingress.kubernetes.io/ssl-redirect: "true"
-    nginx.ingress.kubernetes.io/proxy-body-size: "10m"
+    kubernetes.io/ingress.class: "traefik"
 spec:
-  ingressClassName: nginx
   rules:
     - host: mmalabugin.ru
       http:
         paths:
-          - path: /DayOnEarth(/|$)(.*)
+          - path: /DayOnEarth
             pathType: Prefix
             backend:
               service:
@@ -23,4 +20,4 @@ spec:
   tls:
     - hosts:
         - mmalabugin.ru
-      secretName: day-on-earth-tls
+      secretName: main-page-tls
